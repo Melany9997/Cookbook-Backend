@@ -23,6 +23,6 @@ end
 private
 
   def category_params
-  params.require(:category).permit(:name)
+  params.require(:category).permit(:name, :category_id)
   end
 end
