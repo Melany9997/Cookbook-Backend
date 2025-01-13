@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :categories, except: [:edit, :update]
-  resources :bookmarks, only: [:delete]
+  resources :categories, except: [:edit, :update] do
+    resources :bookmarks, only: [:new, :create,]
+  end
+
+  resources :bookmarks, only: [:destroy]
 
   #get "categories" to: "categories#index"
 
