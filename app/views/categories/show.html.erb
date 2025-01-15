@@ -16,7 +16,9 @@
 <div class="cards">
   <% @category.bookmarks.each do |bookmark| %>
     <div class="card-trip">
-      <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-link" do %>
+        <i class="fa-regular fa-trash-can"></i>
+      <% end %>
 
       <%= image_tag "tomato-pasta.jpg" %>
 
@@ -27,8 +29,7 @@
           <p><%= bookmark.comment %></p>
         </div>
 
-
-        <h2> <%= bookmark.recipe.rating %></h2>
+        <h2> <%= bookmark.recipe.rating %></h2> <%= '⭐️' * bookmark.recipe.rating %>
       </div>
     </div>
 
