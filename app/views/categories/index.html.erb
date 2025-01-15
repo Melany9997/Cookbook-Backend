@@ -1,8 +1,23 @@
-<h1>See All Categories Below</h1>
-<ul>
-  <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, category_path(category.id)%>
-   </li>
-  <% end %>
-</ul>
+
+<div class="banner" style= "background-image: url('<%= image_path "spices.png" %> ')">
+  <h1>Welcome to the Cookbook!</h1>
+</div>
+
+
+<div class="container">
+
+  <div class="info-top">
+    <h3>See all Categories below</h3>
+    <%= link_to "New Category", new_category_path, class:"btn btn-warning" %>
+  </div>
+
+  <div class="cards" >
+    <% @categories.each do |category| %>
+      <%= link_to category_path(category) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path "spices.png" %>')">
+        <h2> <%= category.name %></h2>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

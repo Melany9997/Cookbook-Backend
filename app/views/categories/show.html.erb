@@ -1,9 +1,37 @@
-<h1><%= @category.name %></h1>
+<div class="banner" style= "background-image: url('<%= image_path "food-photography.jpg" %> ')">
+  <h1><%= @category.name %></h1>
+</div>
 
-<ul>
+
+<div class ="container" >
+
+  <div class="info-top">
+    <h3>Recipes</h3>
+    <div>
+      <%= link_to "Add a recipe",new_category_bookmark_path(@category), class:"btn btn-warning" %>
+      <%= link_to "Back to Categories", categories_path, class:"btn btn-info" %>
+    </div>
+  </div>
+
+<div class="cards">
   <% @category.bookmarks.each do |bookmark| %>
-  <li>
-    <%= bookmark.recipe.name %> | <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-  </li>
+    <div class="card-trip">
+      <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+      <%= image_tag "tomato-pasta.jpg" %>
+
+      <div class="card-trip-infos">
+        <div class= "card-recipe-description">
+          <h2><%= bookmark.recipe.name %></h2>
+          <p><%= bookmark.recipe.description %></p>
+          <p><%= bookmark.comment %></p>
+        </div>
+
+
+        <h2> <%= bookmark.recipe.rating %></h2>
+      </div>
+    </div>
+
   <% end %>
-</ul>
+  </div>
+</div>
